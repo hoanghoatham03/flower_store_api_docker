@@ -3,7 +3,7 @@ services:
     name: flowerstore-app
     env: docker
     plan: starter
-    dockerComposePath: ./docker-compose.yml
+    dockerfilePath: ./docker-compose.yml
     autoDeploy: true
     envVars:
       - key: DB_USERNAME

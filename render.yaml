@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: flowerstore-app
+    env: docker
+    plan: starter
+    dockerComposePath: ./docker-compose.yml
+    autoDeploy: true
+    envVars:
+      - key: DB_USERNAME
+        value: root
+      - key: DB_PASSWORD
+        value: yourpassword
+      - key: CLOUDINARY_CLOUD_NAME
+        value: your-cloudinary-cloud-name
+      - key: CLOUDINARY_API_KEY
+        value: your-cloudinary-api-key
+      - key: CLOUDINARY_API_SECRET
+        value: your-cloudinary-api-secret
+      - key: JWT_SECRET
+        value: your-jwt-secret
+      - key: JWT_EXPIRATION
+        value: your-jwt-expiration
+      - key: JWT_REFRESH_EXPIRATION
+        value: your-jwt-refresh-expiration
+      - key: MAIL_USERNAME
+        value: your-email-username
+      - key: MAIL_PASSWORD
+        value: your-email-password

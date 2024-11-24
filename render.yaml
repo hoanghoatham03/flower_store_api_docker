@@ -1,5 +1,5 @@
 services:
-  - type: docker-compose
+  - type: docker
     name: flowerstore-app
     env: docker
     plan: starter

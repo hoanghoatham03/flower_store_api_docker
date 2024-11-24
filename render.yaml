@@ -3,8 +3,6 @@ services:
     name: flowerstore-app
     env: docker
     plan: starter
-    buildCommand: "" # Không cần nếu sử dụng Docker Image
-    startCommand: "" # Sử dụng command mặc định trong Dockerfile
     dockerfilePath: ./Dockerfile
     envVars:
       - key: SPRING_DATASOURCE_URL
@@ -26,43 +24,23 @@ services:
       - key: JWT_SECRET
         value: your-jwt-secret
       - key: JWT_EXPIRATION
-        value: "3600000" # Thời gian hết hạn (ms)
+        value: "3600000" # Thời gian hết hạn JWT
       - key: JWT_REFRESH_EXPIRATION
-        value: "86400000" # Thời gian làm mới (ms)
-      - key: MAIL_USERNAME
-        value: your-mail-username
-      - key: MAIL_PASSWORD
-        value: your-mail-password
-      - key: SPRING_MAIL_HOST
-        value: smtp.gmail.com
-      - key: SPRING_MAIL_PORT
-        value: "587"
-      - key: SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH
-        value: "true"
-      - key: SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE
-        value: "true"
-      - key: SPRING_MAIL_PROPERTIES_MAIL_SMTP_SSL_TRUST
-        value: smtp.gmail.com
-      - key: SPRING_MAIL_PROPERTIES_MAIL_SMTP_CONNECTIONTIMEOUT
-        value: "5000"
-      - key: SPRING_MAIL_PROPERTIES_MAIL_SMTP_TIMEOUT
-        value: "5000"
-      - key: SPRING_MAIL_PROPERTIES_MAIL_SMTP_WRITETIMEOUT
-        value: "5000"
+        value: "86400000" # Thời gian làm mới JWT
 
-  - type: private_service
+  - type: web
     name: flowerstore-db
     env: docker
-    dockerImage: mysql:8.0
     plan: starter
+    dockerImage: mysql:8.0
     envVars:
       - key: MYSQL_DATABASE
         value: flower_store
       - key: MYSQL_ROOT_PASSWORD
         value: yourpassword
 
-  - type: private_service
+  - type: web
     name: flowerstore-redis
     env: docker
-    dockerImage: redis:alpine
     plan: starter
+    dockerImage: redis:alpine
